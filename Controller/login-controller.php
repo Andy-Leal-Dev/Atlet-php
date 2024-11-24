@@ -11,15 +11,20 @@
         $usuario = $stmt->fetch();
     
         if ($usuario && password_verify($contrasena, $usuario['pass'])) {
-            $cookie = $usuario['id'];
-
-            setcookie('id', $cookie);
-
+            $cookieid = $usuario['id'];
+            $cookietypeUser = $usuario['tipo_user'];
+            setcookie('id', $cookieid);
+            setcookie('id', $cookietypeUser);
             $referred = isset($_COOKIE['id']) ? $_COOKIE['id'] : "";
             if(!$referred){
                 echo "no hay cokie";
             } else{
-                header('Location: /Proyecto-PHP/index-user.php ');
+                if($cookieid === 1){
+                    header('Location: /Proyecto-PHP/index-driver.php ');
+                } else if($cookieid === 2){
+                    header('Location: /Proyecto-PHP/index-user.php ');
+                }
+                
             }
            
         } else {
