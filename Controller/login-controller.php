@@ -14,14 +14,14 @@
             $cookieid = $usuario['id'];
             $cookietypeUser = $usuario['tipo_user'];
             setcookie('id', $cookieid);
-            setcookie('id', $cookietypeUser);
+            setcookie('type', $cookietypeUser);
             $referred = isset($_COOKIE['id']) ? $_COOKIE['id'] : "";
             if(!$referred){
                 echo "no hay cokie";
             } else{
-                if($cookieid === 1){
+                if($cookietypeUser === 1){
                     header('Location: /Proyecto-PHP/index-driver.php ');
-                } else if($cookieid === 2){
+                } else if($cookietypeUser === 2){
                     header('Location: /Proyecto-PHP/index-user.php ');
                 }
                 
